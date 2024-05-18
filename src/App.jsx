@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      {user ? <Home/> : <Register/>}
+      {user ? <Home correoUsuario = {user.email}/> : <Register/>}
     </div>
   )
 }
