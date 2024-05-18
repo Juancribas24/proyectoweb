@@ -1,27 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Register from './Login/Register'
 import appFirebase from './credenciales/credenciales'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import Login from './Login/Login'
-const auth = getAuth(appFirebase)
+import Home from './components/Home'
 
+
+const auth = getAuth(appFirebase)
 
 function App() {
   const [user, setUser] = useState(null)
-  onAuthStateChanged(auth, (userFirebase) => {
-    if (userFirebase) {
+
+  onAuthStateChanged(auth, (userFirebase)=>{
+    if(userFirebase){
       setUser(userFirebase)
     }
     else{
       setUser(null)
     }
   })
+
   return (
     <div>
-      {user ? <Login correoUser = {user.email}/> : <Register/>}
-
+      {user ? <Home/> : <Register/>}
     </div>
   )
 }
 
 export default App
+
