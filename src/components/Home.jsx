@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import appFirebase from '../credenciales/credenciales';
 import { getAuth, signOut } from 'firebase/auth';
 import { createDocument, readDocument } from '../credenciales/crud'; // Importa las funciones CRUD
-import CreateTournamentForm from './CreateTournament';
+import CreateTournament from './CreateTournament';
+import UpdateTournament from './UpdateTournament';
 
 const auth = getAuth(appFirebase)
 
@@ -10,6 +11,7 @@ const Home = ({ correoUser }) => {
 
   const [documentData, setDocumentData] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -49,7 +51,9 @@ const Home = ({ correoUser }) => {
       <h1>Bienvenido usuario {correoUser} <button className='btn-logout' onClick={handleSignOut}>Logout</button></h1>
 
       {showForm ? (
-        <CreateTournamentForm />
+        <CreateTournament />
+      ) : showUpdateForm ? (
+        <UpdateTournament tournamentId='K5rZXmNIyE58wguU0cVA' onUpdate={() => setShowUpdateForm(false)} />
       ) : (
         documentData && (
           <div>
@@ -65,6 +69,10 @@ const Home = ({ correoUser }) => {
 
       <button onClick={() => setShowForm(!showForm)}>
         {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
+      </button>
+
+      <button onClick={() => setShowUpdateForm(!showUpdateForm)}>
+        {showUpdateForm ? 'Ocultar Formulario de Actualización' : 'Actualizar Torneo'}
       </button>
     </div>
   )
