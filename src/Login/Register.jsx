@@ -25,7 +25,7 @@ const Register = () => {
                 await signInWithEmailAndPassword(auth, email, password);
                 console.log("Usuario inició sesión con éxito:", email);
             } catch (error) {
-                console.error("Error al iniciar sesión:", error);
+                alert("El correo o la contraseña son incorrectos")
             }
         }
     };
@@ -36,7 +36,7 @@ const Register = () => {
             <form className='formRegister' onSubmit={functAuthentucacion}>
                 <div className='form-group'>
                     <input type='email' className='register' placeholder='Email' id='email' name='email' autoComplete='email' />
-                    <input type='password' className='register' placeholder='Password' id='password' name='password' autoComplete='current-password' />
+                    <input type='password' className='password' placeholder='Password' id='password' name='password' autoComplete='current-password' />
                     <button type='submit' className='btnRegister'>{register ? 'Registrarse' : 'Iniciar Sesión'}</button>
                 </div>
             </form>

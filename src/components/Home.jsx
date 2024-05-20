@@ -15,7 +15,7 @@ const Home = ({ correoUser }) => {
   }
 
   return (
-    <div>
+    <div className='containerGoku'>
       <h1>Bienvenido usuario {correoUser} <button className='btn-logout' onClick={handleSignOut}>Logout</button></h1>
     </div>
   )
