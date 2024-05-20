@@ -57,8 +57,11 @@ body {
 }
 
 .containerGoku{
+    margin-top: 15px;
     display: flex;
 	align-items: center;
+    flex-direction: column;
+
 }
 .btn-logout {
 	width: auto;
@@ -77,6 +80,14 @@ body {
 .btn-logout:hover {
 	background-color:#84f1bd;
 	color: #000;
+}
+
+.containerTorneo1{
+    display: flex;
+	align-items: center;
+    padding: 15px;
+    flex-direction: column;
+    
 }
 
 
