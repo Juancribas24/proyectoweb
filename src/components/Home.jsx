@@ -9,6 +9,14 @@ const Home = ({ correoUser }) => {
 
   const [documentData, setDocumentData] = useState(null);
 
+  const [newTournament, setNewTournament] = useState({
+    name: '',
+    date: '',
+    img: '',
+    maxParticipants: 0,
+    registered: 0,
+  });
+
   const handleSignOut = async () => {
     try {
       await signOut(auth)
@@ -28,9 +36,19 @@ const Home = ({ correoUser }) => {
     }, []);
 
       // Función para crear un nuevo documento en Firestore
-  const handleCreateDocument = async () => {
-    const newData = { name: 'Nuevo Torneo', date: '2024-05-20' };
-    await createDocument('torneoTenis', 'nuevoTorneoId', newData);
+  // Función para crear un nuevo documento en Firestore
+  const handleCreateDocument = async (event) => {
+    event.preventDefault();
+    const newId = `torneo-${Date.now()}`;
+    await createDocument('torneoTenis', newId, newTournament);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setNewTournament((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -47,7 +65,48 @@ const Home = ({ correoUser }) => {
           <p>Registrados: {documentData.registered}</p>
           </div>
       )}
+
+      <form onSubmit={handleCreateDocument}>
+        <h2>Crear Nuevo Torneo</h2>
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          value={newTournament.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          placeholder="Fecha"
+          value={newTournament.date}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="img"
+          placeholder="URL de la imagen"
+          value={newTournament.img}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="maxParticipants"
+          placeholder="Participantes Máximos"
+          value={newTournament.maxParticipants}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="registered"
+          placeholder="Registrados"
+          value={newTournament.registered}
+          onChange={handleChange}
+        />
       <button onClick={handleCreateDocument}>Crear Nuevo Torneo</button>
+      </form>
     </div>
   )
 }
