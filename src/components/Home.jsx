@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react';
 import appFirebase from '../credenciales/credenciales';
 import { getAuth, signOut } from 'firebase/auth';
 import { createDocument, readDocument } from '../credenciales/crud'; // Importa las funciones CRUD
+import CreateTournamentForm from './CreateTournament';
 
 const auth = getAuth(appFirebase)
 
 const Home = ({ correoUser }) => {
 
   const [documentData, setDocumentData] = useState(null);
-
-  const [newTournament, setNewTournament] = useState({
-    name: '',
-    date: '',
-    img: '',
-    maxParticipants: 0,
-    registered: 0,
-  });
+  const [showForm, setShowForm] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -35,7 +29,6 @@ const Home = ({ correoUser }) => {
       fetchData();
     }, []);
 
-      // Función para crear un nuevo documento en Firestore
   // Función para crear un nuevo documento en Firestore
   const handleCreateDocument = async (event) => {
     event.preventDefault();
@@ -55,58 +48,24 @@ const Home = ({ correoUser }) => {
     <div className='containerGoku'>
       <h1>Bienvenido usuario {correoUser} <button className='btn-logout' onClick={handleSignOut}>Logout</button></h1>
 
-      {documentData && (
-        <div>
-          <h2>Datos del Torneo:</h2>
-          <p>Nombre: {documentData.name}</p>
-          <p>Fecha: {documentData.date}</p>
-          <p>Imagen: {documentData.img}</p>
-          <p>ParticipantesMax: {documentData.maxParticipants}</p>
-          <p>Registrados: {documentData.registered}</p>
+      {showForm ? (
+        <CreateTournamentForm />
+      ) : (
+        documentData && (
+          <div>
+            <h2>Datos del Torneo:</h2>
+            {documentData.img && <img src={documentData.img} alt="Torneo" />}
+            <p>Nombre: {documentData.name}</p>
+            <p>Fecha: {documentData.date}</p>
+            <p>Participantes Max: {documentData.maxParticipants}</p>
+            <p>Registrados: {documentData.registered}</p>
           </div>
+        )
       )}
 
-      <form onSubmit={handleCreateDocument}>
-        <h2>Crear Nuevo Torneo</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nombre"
-          value={newTournament.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          placeholder="Fecha"
-          value={newTournament.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="img"
-          placeholder="URL de la imagen"
-          value={newTournament.img}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="maxParticipants"
-          placeholder="Participantes Máximos"
-          value={newTournament.maxParticipants}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="registered"
-          placeholder="Registrados"
-          value={newTournament.registered}
-          onChange={handleChange}
-        />
-      <button onClick={handleCreateDocument}>Crear Nuevo Torneo</button>
-      </form>
+      <button onClick={() => setShowForm(!showForm)}>
+        {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
+      </button>
     </div>
   )
 }
