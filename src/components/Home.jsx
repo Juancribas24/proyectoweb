@@ -46,6 +46,14 @@ const Home = ({ correoUser }) => {
     }));
   };
 
+  const handleDeleteDocument = async () => {
+    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este torneo?');
+    if (confirmDelete) {
+      await deleteDocument('torneoTenis', 'K5rZXmNIyE58wguU0cVA');
+      setDocumentData(null);
+    }
+  };
+
   return (
     <div className='containerGoku'>
       <h1>Bienvenido usuario {correoUser} <button className='btn-logout' onClick={handleSignOut}>Logout</button></h1>
@@ -63,16 +71,14 @@ const Home = ({ correoUser }) => {
             <p>Fecha: {documentData.date}</p>
             <p>Participantes Max: {documentData.maxParticipants}</p>
             <p>Registrados: {documentData.registered}</p>
+            <button onClick={() => setShowUpdateForm(true)}>Actualizar Torneo</button>
+            <button onClick={handleDeleteDocument}>Eliminar Torneo</button>
           </div>
         )
       )}
 
       <button onClick={() => setShowForm(!showForm)}>
         {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
-      </button>
-
-      <button onClick={() => setShowUpdateForm(!showUpdateForm)}>
-        {showUpdateForm ? 'Ocultar Formulario de Actualización' : 'Actualizar Torneo'}
       </button>
     </div>
   )

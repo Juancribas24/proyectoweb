@@ -73,6 +73,7 @@ const UpdateTournament = ({ tournamentId, onUpdate }) => {
         onChange={handleChange}
       />
       <button type="submit">Actualizar Torneo</button>
+      <button type="button" onClick={onUpdate}>Volver</button> {/* Botón para volver */}
     </form>
   );
 };
