@@ -64,25 +64,20 @@ const Home = ({ correoUser }) => {
         <UpdateTournament tournamentId='K5rZXmNIyE58wguU0cVA' onUpdate={() => setShowUpdateForm(false)} />
       ) : (
         documentData && (
-          <div className='containerTorneo'>
-            <h2>Datos de los torneos:</h2>
-            <div className='torneo'>
-              {documentData.img && <img src={documentData.img} alt="Torneo" />}
-              <p>Nombre: {documentData.name}</p>
-              <p>Fecha: {documentData.date}</p>
-              <p>Participantes Max: {documentData.maxParticipants}</p>
-              <p>Registrados: {documentData.registered}</p>
-            </div>
-            <div className='btns'>
-              <button className='btn-update' onClick={() => setShowUpdateForm(true)}>Actualizar Torneo</button>
-              <button className='btn-delete' onClick={handleDeleteDocument}>Eliminar Torneo</button>
-            </div>  
-            
+          <div>
+            <h2>Datos del Torneo:</h2>
+            {documentData.img && <img src={documentData.img} alt="Torneo" />}
+            <p>Nombre: {documentData.name}</p>
+            <p>Fecha: {documentData.date}</p>
+            <p>Participantes Max: {documentData.maxParticipants}</p>
+            <p>Registrados: {documentData.registered}</p>
+            <button onClick={() => setShowUpdateForm(true)}>Actualizar Torneo</button>
+            <button onClick={handleDeleteDocument}>Eliminar Torneo</button>
           </div>
         )
       )}
 
-      <button className='btn-create' onClick={() => setShowForm(!showForm)}>
+      <button onClick={() => setShowForm(!showForm)}>
         {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
       </button>
     </div>
