@@ -25,8 +25,7 @@ const CreateTournamentForm = () => {
     };
   
     return (
-      <div className='form-group1'>
-        <form onSubmit={handleCreateDocument}>
+      <form onSubmit={handleCreateDocument}>
         <h2>Crear Nuevo Torneo</h2>
         <input
           type="text"
@@ -65,11 +64,8 @@ const CreateTournamentForm = () => {
           value={newTournament.registered}
           onChange={handleChange}
         />
-        <button className='btn-create' type="submit">Crear Nuevo Torneo</button>
+        <button type="submit">Crear Nuevo Torneo</button>
       </form>
-
-      </div>
-      
     );
   };
   
