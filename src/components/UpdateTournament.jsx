@@ -33,48 +33,52 @@ const UpdateTournament = ({ tournamentId, onUpdate }) => {
   };
 
   return (
-    <form onSubmit={handleUpdateDocument}>
-      <h2>Actualizar Torneo</h2>
-      <input
-        type="text"
-        name="name"
-        placeholder="Nombre"
-        value={tournament.name}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="date"
-        name="date"
-        placeholder="Fecha"
-        value={tournament.date}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="img"
-        placeholder="URL de la imagen"
-        value={tournament.img}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="maxParticipants"
-        placeholder="Participantes Máximos"
-        value={tournament.maxParticipants}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="registered"
-        placeholder="Registrados"
-        value={tournament.registered}
-        onChange={handleChange}
-      />
-      <button type="submit">Actualizar Torneo</button>
-      <button type="button" onClick={onUpdate}>Volver</button> {/* Botón para volver */}
+    <div className='form-group1'>
+      <form onSubmit={handleUpdateDocument}>
+        <h2>Actualizar Torneo</h2>
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          value={tournament.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          placeholder="Fecha"
+          value={tournament.date}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="img"
+          placeholder="URL de la imagen"
+          value={tournament.img}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="maxParticipants"
+          placeholder="Participantes Máximos"
+          value={tournament.maxParticipants}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="registered"
+          placeholder="Registrados"
+          value={tournament.registered}
+          onChange={handleChange}
+        />
+        <div className='form-button-group'>
+          <button className='btn-update' type="submit">Actualizar Torneo</button>
+          <button className='btn-back' type="button" onClick={onUpdate}>Volver</button> {/* Botón para volver */}
+        </div>
     </form>
+    </div>
   );
 };
 
