@@ -1,6 +1,10 @@
 import React from 'react';
+import appFirebase from '../credenciales/credenciales';
+import { getAuth, signOut } from 'firebase/auth';
 import AdminPage from './AdminPage';
 import UserPage from './UserPage';
+
+const auth = getAuth(appFirebase);
 
 const Home = ({ correoUser, rol }) => {
   return (
@@ -11,3 +15,4 @@ const Home = ({ correoUser, rol }) => {
 }
 
 export default Home;
+

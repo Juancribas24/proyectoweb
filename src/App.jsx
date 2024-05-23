@@ -4,8 +4,6 @@ import appFirebase from './credenciales/credenciales';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import Home from './components/Home';
-import AdminPage from './components/AdminPage';
-import UserPage from './components/UserPage';
 
 const auth = getAuth(appFirebase);
 const firestore = getFirestore(appFirebase);
@@ -53,7 +51,7 @@ function App() {
 
   return (
     <div>
-      {user ? <Home user={user} /> : <Register />}
+      {user ? <Home correoUser={user.email} rol={user.rol} /> : <Register />}
     </div>
   );
 }
