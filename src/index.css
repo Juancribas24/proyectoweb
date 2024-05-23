@@ -56,7 +56,7 @@ body {
 	color: #000;
 }
 
-.containerGoku{
+.containerTorneo{
     margin-top: 15px;
     display: flex;
 	align-items: center;
@@ -82,13 +82,161 @@ body {
 	color: #000;
 }
 
-.containerTorneo1{
+.containerTorneo{
     display: flex;
-	align-items: center;
     padding: 15px;
     flex-direction: column;
-    
 }
+
+.containerTorneo img{
+    width: 150px;
+}
+
+.torneo{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    flex-direction: column;
+	gap: 10px;
+}
+
+.btns{
+    gap:10px; 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn-update{
+    margin-top: 10px;
+    width: auto;
+	border: none;
+	outline: none;
+	border-radius: 25px;
+	padding: 15px 30px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+
+.btn-update:hover {
+	background-color:#84f1bd;
+	color: #000;
+}
+
+.btn-delete{
+    margin-top: 10px;
+    width: auto;
+	border: none;
+	outline: none;
+	border-radius: 25px;
+	padding: 15px 30px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+
+.btn-delete:hover {
+	background-color:#84f1bd;
+	color: #000;
+}
+
+.btn-create{
+    margin-top: 10px;
+    width: auto;
+	border: none;
+	outline: none;
+	border-radius: 25px;
+	padding: 15px 30px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.btn-create:hover {
+	background-color:#84f1bd;
+	color: #000;
+}
+
+.form-group1{
+    margin-top: 10px;
+}
+
+
+
+.form-group1 input{
+    margin: 10px;
+    display: flex;
+	align-items: center;
+    flex-direction: column;
+    gap: 20px;
+	padding: 15px 15px;
+	font-family: inherit;
+	width: 250px;
+	border: none;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+	outline: none;
+	font-size: 15px;
+}
+
+.form-button-group{
+    display: flex;
+    align-items: center;
+	flex-direction: row;
+	gap: 10px;
+	padding: 20px;
+}
+
+.form-button-group button{
+    margin-top: 10px;
+    width: auto;
+	border: none;
+	outline: none;
+	border-radius: 25px;
+	padding: 15px 30px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.form-button-group button:hover{
+    background-color:#84f1bd;
+	color: #000;
+}
+
+    
+.btn-new-create{
+    width: auto;
+	border: none;
+	outline: none;
+	border-radius: 25px;
+	padding: 15px 30px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+
+
+
 
 
 
