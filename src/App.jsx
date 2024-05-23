@@ -3,6 +3,8 @@ import Register from './Login/Register'
 import appFirebase from './credenciales/credenciales'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import Home from './components/Home'
+import Navigation from './components/Navigation'
+
 
 
 const auth = getAuth(appFirebase)
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <div>
-      {user ? <Home correoUsuario = {user.email}/> : <Register/>}
+      {user ? <Home correoUser = {user.email}/> : <Register/>}
     </div>
   )
 }
