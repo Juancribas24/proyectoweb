@@ -16,7 +16,6 @@ const Register = () => {
             const docuRef = doc(firestore, `users/${infoUser.user.uid}`);
             await setDoc(docuRef, { correo: email, rol: rol });
             alert('Registro exitoso. Ahora puedes iniciar sesión.');
-            // No iniciar sesión automáticamente después de registrar
         } catch (error) {
             console.error("Error al registrar el usuario:", error);
         }
@@ -26,7 +25,7 @@ const Register = () => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        const rol = event.target.rol ? event.target.rol.value : null;
+        const rol = event.target.rol ? event.target.rol.value : "user"; // Default rol is 'user'
 
         if (register) {
             await registerUser(email, password, rol);
@@ -42,7 +41,11 @@ const Register = () => {
     const handleGoogleSignIn = async () => {
         const googleProvider = new GoogleAuthProvider();
         try {
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            const userFirebase = result.user;
+            const docuRef = doc(firestore, `users/${userFirebase.uid}`);
+            await setDoc(docuRef, { correo: userFirebase.email, rol: "user" }, { merge: true });
+            console.log("Usuario registrado con Google:", userFirebase.uid);
         } catch (error) {
             console.error("Error al iniciar sesión con Google:", error);
         }

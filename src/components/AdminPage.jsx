@@ -4,6 +4,8 @@ import { getAuth, signOut } from 'firebase/auth';
 import { createDocument, readDocument, deleteDocument } from '../credenciales/crud';
 import CreateTournament from './CreateTournament';
 import UpdateTournament from './UpdateTournament';
+import { Link } from 'react-router-dom';
+import Logo from '../assets/TennisClub.png';
 
 const auth = getAuth(appFirebase);
 
@@ -53,7 +55,33 @@ const AdminPage = ({ correoUser }) => {
 
   return (
     <div className='containerGoku'>
-      <h1>Bienvenido admin {correoUser} <button className='btn-logout' onClick={handleSignOut}>Logout</button></h1>
+      <nav className='container-nav-admin'>
+          
+        <form className='form-nav'>
+          <Link>
+              <img 
+                src={Logo} 
+                alt="Logo Tennis" />
+          </Link>
+          
+          <input
+                type='search'
+                name='valueSearch'
+                id=''
+                placeholder='Buscar nombre torneo'
+          />
+          <button className='btn-search'>Buscar</button>
+        
+          <button className='btn-create' onClick={() => setShowForm(!showForm)}>
+            {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
+          </button>
+          
+          <button className='btn-logout' onClick={handleSignOut}>Logout</button>
+
+        </form>
+        
+      </nav>
+      <h1>Bienvenido admin {correoUser} </h1>
       {showForm ? (
         <CreateTournament />
       ) : showUpdateForm ? (
@@ -76,9 +104,7 @@ const AdminPage = ({ correoUser }) => {
           </div>
         )
       )}
-      <button className='btn-create' onClick={() => setShowForm(!showForm)}>
-        {showForm ? 'Ocultar Formulario' : 'Crear Nuevo Torneo'}
-      </button>
+      
     </div>
   );
 };

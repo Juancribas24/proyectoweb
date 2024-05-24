@@ -234,9 +234,54 @@ body {
 	letter-spacing: 2px;
 }
 
+.form-nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	
+
+
+}
+
+
+.container-nav-admin img{
+	width: 250px;
+	padding: 10px;
+
+}
+
+.container-nav-admin input{
+	font-family: inherit;
+	width: 400px;
+	border: none;
+	outline: none;
+	font-size: 15px;
+	padding: 12px;
+	border-radius: 15px;
+	background-color: rgb(175, 175, 170);
+}
 
 
 
+
+
+.btn-search{
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	padding: 10px;
+	font-family: inherit;
+	color: #fff;
+    background-color: #50cb90;
+	cursor: pointer;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.btn-search:hover {
+	background-color:#84f1bd;
+	color: #000;
+}
 
 
 

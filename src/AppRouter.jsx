@@ -1,20 +1,18 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
 import AdminPage from './components/AdminPage';
 import UserPage from './components/UserPage';
 import Register from './Login/Register';
 
 
-export const AppRouter = () => {
-	return (
-		<Routes>
-			<Route path='/' element={<Navigation />}>
-				<Route index element={<Home/>} />
-                <Route path='/user' element={<UserPage/>} />
-                <Route path='/admin' element={<AdminPage/>} />
-				<Route path="/register" element={<Register/>} />
-			</Route>
-		</Routes>
-	);
+export const AppRouter = ({ correoUser, rol }) => {
+  return (
+    <Routes>
+      <Route index element={<Home correoUser={correoUser} rol={rol} />} />
+      <Route path='/user' element={<UserPage correoUser={correoUser} />} />
+      <Route path='/admin' element={<AdminPage correoUser={correoUser} />} />
+      <Route path='/register' element={<Register />} />
+    </Routes>
+  );
 };
