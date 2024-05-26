@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { AppRouter } from './AppRouter';
 import appFirebase from './credenciales/credenciales';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import Register from './Login/Register';
+import Register from './Pages/Register';
 
 const auth = getAuth(appFirebase);
 const firestore = getFirestore(appFirebase);
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   async function getRol(uid) {
     try {
@@ -31,9 +33,11 @@ function App() {
         rol: rol,
       };
       setUser(userData);
+      setLoading(false);
       console.log("Usuario registrado", userData);
     }).catch((error) => {
       console.error("Error al obtener el rol del usuario:", error);
+      setLoading(false);
     });
   }
 
@@ -43,16 +47,23 @@ function App() {
         setUserWithFirebaseAndRol(userFirebase);
       } else {
         setUser(null);
+        setLoading(false);
       }
     });
 
     return () => unsubscribe();
   }, []);
 
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
+
   return (
-    <div>
-      {user ? <AppRouter correoUser={user.email} rol={user.rol} /> : <Register />}
-    </div>
+    <Router>
+      <div>
+        {user ? <AppRouter correoUser={user.email} rol={user.rol} /> : <Register />}
+      </div>
+    </Router>
   );
 }
 
