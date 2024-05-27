@@ -10,6 +10,9 @@ const Register = () => {
   const firestore = getFirestore(appFirebase);
   const [register, setRegister] = useState(false);
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
   async function registerUser(email, password, rol) {
     try {
@@ -56,31 +59,53 @@ const Register = () => {
     }
   };
 
-  return (
-    <div className='containerRegister'>
-        <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
-        <form className='formRegister' onSubmit={functAuthentucacion}>
-            <div className='form-group'>
-                <input type='email' placeholder='Email' id='email' name='email' autoComplete='email' />
-                <input type='password' placeholder='Password' id='password' name='password' autoComplete='current-password' />
-                {register && (
-                    <label>
-                        <span>Rol</span>
-                        <select id='rol' name='rol'>
-                            <option value="admin">Administrador</option>
-                            <option value="user">Usuario</option>
-                        </select>
-                    </label>
-                )}
-            </div>
-            <button type='submit' className='btnRegister'>{register ? 'Registrarse' : 'Iniciar Sesión'}</button>
-        </form>
-        <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>
-        <div className='registerLink'>
-            {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={() => setRegister(!register)}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
-        </div>
-    </div>
-  ); 
+  const toggleRegister = () => {
+    setRegister(!register);
+    setEmail('');
+    setPassword('');
+};
+
+return (
+  <div className='containerRegister'>
+      <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
+      <form className='formRegister' onSubmit={functAuthentucacion}>
+          <div className='form-group'>
+              <input
+                  type='email'
+                  placeholder='Email'
+                  id='email'
+                  name='email'
+                  autoComplete='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                  type='password'
+                  placeholder='Password'
+                  id='password'
+                  name='password'
+                  autoComplete='current-password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+              {register && (
+                  <label>
+                      <span>Rol</span>
+                      <select id='rol' name='rol'>
+                          <option value="admin">Administrador</option>
+                          <option value="user">Usuario</option>
+                      </select>
+                  </label>
+              )}
+          </div>
+          <button type='submit' className='btnRegister'>{register ? 'Registrarse' : 'Iniciar Sesión'}</button>
+      </form>
+      <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>
+      <div className='registerLink'>
+          {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={toggleRegister}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
+      </div>
+  </div>
+  );
 };
 
 export default Register;
