@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import appFirebase, { db } from '../credenciales/credenciales';
 import { getAuth, signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../assets/TennisClub.png';
+import logo from '../assets/TennisClub.png';
 import { collection, onSnapshot } from 'firebase/firestore';
 import SearchTorneo from '../components/SearchTorneo';
 
@@ -52,7 +52,7 @@ const UserPage = ({ correoUser }) => {
         <form className='form-nav'>
           <Link to='/'>
             <img 
-              src={Logo} 
+              src={logo} 
               alt="Logo Tennis" />
           </Link>
           <SearchTorneo torneos={torneos} onSearch={handleSearch} />

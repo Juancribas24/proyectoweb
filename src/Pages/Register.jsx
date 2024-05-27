@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import appFirebase from '../credenciales/credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import logo from '../assets/TennisClub.png';
 
 const auth = getAuth(appFirebase);
 
@@ -67,7 +68,10 @@ const Register = () => {
 
 return (
   <div className='containerRegister'>
-      <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
+      <div className="header">
+          <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
+          <img src={logo} alt="Tennis Club Logo" className="logo" />
+      </div>
       <form className='formRegister' onSubmit={functAuthentucacion}>
           <div className='form-group'>
               <input
@@ -105,7 +109,7 @@ return (
           {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={toggleRegister}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
       </div>
   </div>
-  );
+);
 };
 
 export default Register;
