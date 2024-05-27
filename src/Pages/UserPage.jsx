@@ -52,7 +52,7 @@ const UserPage = ({ correoUser }) => {
         <Link to='/'>
           <img src={logo} alt="Logo Tennis" className="logo" />
         </Link>
-        <SearchTorneo torneos={torneos} onSearch={handleSearch} className="search-bar"/>
+        <SearchTorneo torneos={torneos} onSearch={handleSearch} className="search-bar" />
         <button className="btn-logout" onClick={handleSignOut}>Logout</button>
       </nav>
       <div className="welcome-message">

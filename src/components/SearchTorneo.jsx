@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const SearchTorneo = ({ torneos, onSearch }) => {
+const SearchTorneo = ({ torneos, onSearch, className }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    const filtered = torneos.filter(torneo =>
-      torneo.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+
+    const filteredResults = torneos.filter(torneo =>
+      torneo.name.toLowerCase().includes(value.toLowerCase())
     );
-    onSearch(filtered);
-  }, [searchTerm, torneos]); // Removido onSearch del array de dependencias
+
+    onSearch(filteredResults);
+  };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Buscar torneo..."
-        value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
-      />
-    </div>
+    <input
+      type="text"
+      className={className}
+      placeholder="Buscar torneo..."
+      value={searchTerm}
+      onChange={handleSearch}
+    />
   );
 };
 

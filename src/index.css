@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
-
 * {
 	margin: 0;
 	padding: 0;
@@ -7,14 +5,13 @@
 }
 
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f0f2f5;
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    background-color: #f0f2f5;
 }
 
 /* --------------------------------------------------------------------- */
@@ -36,9 +33,12 @@ body {
 }
 
 .logo {
-    width: 145px; 
+    width: 145px;
     height: auto;
-    margin-left: 20px; 
+    justify-self: center; /* Asegura que el logo esté centrado horizontalmente */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .containerRegister {
@@ -86,7 +86,7 @@ body {
     padding: 15px;
     border: none;
     border-radius: 5px;
-    background-color: #50cb90;
+    background-color: #62946f;
     color: white;
     font-size: 16px;
     margin-top: 20px;
@@ -122,7 +122,7 @@ body {
 }
 
 .containerRegister .registerLink a {
-    color: #50cb90;
+    color: #62946f;
     text-decoration: none;
     font-weight: bold;
 }
@@ -176,7 +176,7 @@ body {
 
 .form-group select:focus {
     outline: none;
-    border-color: #50cb90;
+    border-color: #62946f;
 }
 
 .form-group select:hover {
@@ -190,16 +190,15 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
 }
 
 .btnRegister:hover {
-	background-color:#84f1bd;
+	background-color:#62946f;
 	color: #000;
 }
 
@@ -210,10 +209,10 @@ body {
 /* -- NavBar --*/
 
 .navbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
+    background-color: #dce8df;
     padding: 10px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -226,23 +225,30 @@ body {
 .search-bar {
     flex-grow: 1;
     margin: 0 20px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #dddddd;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    min-width: 200px;
+    max-width: 600px;
+    height: auto;
 }
+
 
 .btn-logout {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #50cb90;
+    background-color: #62946f;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-sizing: border-box;
+    margin: 0;
+	min-width: 100px;
+    max-width: 200px;
+    justify-self: center; /* Centra el botón de logout horizontalmente */
 }
 
 .btn-logout:hover {
@@ -289,7 +295,7 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #50cb90;
+    background-color: #62946f;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -338,9 +344,8 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
@@ -348,7 +353,7 @@ body {
 
 
 .btn-update:hover {
-	background-color:#84f1bd;
+	background-color:#62946f;
 	color: #000;
 }
 
@@ -359,9 +364,8 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
@@ -369,7 +373,7 @@ body {
 
 
 .btn-delete:hover {
-	background-color:#84f1bd;
+	background-color:#62946f;
 	color: #000;
 }
 
@@ -380,16 +384,15 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
 }
 
 .btn-create:hover {
-	background-color:#84f1bd;
+	background-color:#62946f;
 	color: #000;
 }
 
@@ -406,7 +409,6 @@ body {
     flex-direction: column;
     gap: 20px;
 	padding: 15px 15px;
-	font-family: inherit;
 	width: 250px;
 	border: none;
     background-color: #f4f4f4;
@@ -430,16 +432,15 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
 }
 
 .form-button-group button:hover{
-    background-color:#84f1bd;
+    background-color:#62946f;
 	color: #000;
 }
 
@@ -450,9 +451,8 @@ body {
 	outline: none;
 	border-radius: 25px;
 	padding: 15px 30px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
@@ -475,7 +475,6 @@ body {
 }
 
 .container-nav-admin input{
-	font-family: inherit;
 	width: 400px;
 	border: none;
 	outline: none;
@@ -494,16 +493,15 @@ body {
 	outline: none;
 	border-radius: 10px;
 	padding: 10px;
-	font-family: inherit;
 	color: #fff;
-    background-color: #50cb90;
+    background-color: #62946f;
 	cursor: pointer;
 	font-weight: 500;
 	letter-spacing: 2px;
 }
 
 .btn-search:hover {
-	background-color:#84f1bd;
+	background-color:#62946f;
 	color: #000;
 }
 
