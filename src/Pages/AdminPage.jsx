@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import appFirebase, { db } from '../credenciales/credenciales';
 import { getAuth, signOut } from 'firebase/auth';
 import { createDocument, readDocument, deleteDocument } from '../credenciales/crud';
 import Logo from '../assets/TennisClub.png';
 import { collection, onSnapshot } from 'firebase/firestore';
+import SearchTorneo from '../components/SearchTorneo';
 
 const auth = getAuth(appFirebase);
 
 const AdminPage = ({ correoUser }) => {
   const [torneos, setTorneos] = useState([]);
-  const [loading, setLoading] = useState(false);  // corrected from 'flase' to 'false'
-  const [open, setOpen] = useState(false);
+  const [filteredTorneos, setFilteredTorneos] = useState([]);
+  const [loading, setLoading] = useState(false);  
   const [newTournament, setNewTournament] = useState({
     name: '',
     date: '',
@@ -19,7 +20,7 @@ const AdminPage = ({ correoUser }) => {
     maxParticipants: 0,
     registered: 0,
   });
-  const [selectedTorneo, setSelectedTorneo] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const AdminPage = ({ correoUser }) => {
         list.push({ id: doc.id, ...doc.data() })
       });
       setTorneos(list);
+      setFilteredTorneos(list);
       setLoading(false);
     },
       (error) => {
@@ -40,11 +42,6 @@ const AdminPage = ({ correoUser }) => {
       unsub();
     }
   }, []);
-
-  const handleModal = (item) => {
-    setOpen(true);
-    setSelectedTorneo(item);
-  };
 
   const handleSignOut = async () => {
     try {
@@ -76,8 +73,13 @@ const AdminPage = ({ correoUser }) => {
     if (confirmDelete) {
       await deleteDocument('torneos', id);
       setTorneos(torneos.filter((torneo) => torneo.id !== id));
+      setFilteredTorneos(filteredTorneos.filter((torneo) => torneo.id !== id));
     }
   };
+
+  const handleSearch = useCallback((results) => {
+    setFilteredTorneos(results);
+  }, []);
 
   return (
     <div className='containerGoku'>
@@ -88,15 +90,7 @@ const AdminPage = ({ correoUser }) => {
               src={Logo} 
               alt="Logo Tennis" />
           </Link>
-          <div>
-            <input
-              type='search'
-              name='valueSearch'
-              id=''
-              placeholder='Buscar nombre torneo'
-            />
-            <button className='btn-search'>Buscar</button>
-          </div>
+          <SearchTorneo torneos={torneos} onSearch={handleSearch} />
           <Link to='/create'>
             <button
               type='button'
@@ -114,7 +108,7 @@ const AdminPage = ({ correoUser }) => {
       </nav>
       <h1>Bienvenido admin {correoUser}</h1>
       <div className='card-group'>
-        {torneos && torneos.map((item) => (
+        {filteredTorneos && filteredTorneos.map((item) => (
           <div className='card' key={item.id}>
             <h2>{item.name}</h2>
             <img src={item.img} alt={item.name} />

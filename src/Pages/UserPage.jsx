@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import appFirebase, { db } from '../credenciales/credenciales';
 import { getAuth, signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/TennisClub.png';
 import { collection, onSnapshot } from 'firebase/firestore';
+import SearchTorneo from '../components/SearchTorneo';
 
 const auth = getAuth(appFirebase);
 
+
 const UserPage = ({ correoUser }) => {
   const [torneos, setTorneos] = useState([]);
+  const [filteredTorneos, setFilteredTorneos] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +21,7 @@ const UserPage = ({ correoUser }) => {
         list.push({ id: doc.id, ...doc.data() });
       });
       setTorneos(list);
+      setFilteredTorneos(list);
     }, 
     (error) => {
       console.error(error);
@@ -38,6 +42,10 @@ const UserPage = ({ correoUser }) => {
     }
   };
 
+  const handleSearch = useCallback((results) => {
+    setFilteredTorneos(results);
+  }, []);
+
   return (
     <div>
       <nav className='container-nav-admin'>
@@ -47,21 +55,13 @@ const UserPage = ({ correoUser }) => {
               src={Logo} 
               alt="Logo Tennis" />
           </Link>
-          <div>
-            <input
-              type='search'
-              name='valueSearch'
-              id=''
-              placeholder='Buscar nombre torneo'
-            />
-            <button className='btn-search'>Buscar</button>
-          </div>
+          <SearchTorneo torneos={torneos} onSearch={handleSearch} />
           <button className='btn-logout' onClick={handleSignOut}>Logout</button>
         </form>
       </nav>
       <h1>Bienvenido user {correoUser}</h1>
       <div className='card-group'>
-        {torneos && torneos.map((item) => (
+        {filteredTorneos && filteredTorneos.map((item) => (
           <div className='card' key={item.id}>
             <h2>{item.name}</h2>
             <img src={item.img} alt={item.name} />
