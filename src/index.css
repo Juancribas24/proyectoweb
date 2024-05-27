@@ -1,3 +1,8 @@
+/* Importa la fuente desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -8,6 +13,7 @@
 html, body {
     margin: 0;
     padding: 0;
+	font-family: "Poppins", sans-serif;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -29,6 +35,7 @@ html, body {
 .header h2 {
     margin: 0;
     font-size: 24px;
+	font-family: "Poppins", sans-serif;
     color: #333333;
 }
 
@@ -64,6 +71,7 @@ html, body {
 .containerRegister h2 {
     margin-bottom: 20px;
     font-size: 24px;
+	font-family: "Poppins", sans-serif;
     color: #333333;
 }
 
@@ -79,6 +87,7 @@ html, body {
     border-radius: 5px;
     margin-top: 10px;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
 }
 
 .containerRegister .btnRegister {
@@ -89,6 +98,7 @@ html, body {
     background-color: #62946f;
     color: white;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -106,6 +116,7 @@ html, body {
     background-color: #db4437;
     color: white;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -118,13 +129,13 @@ html, body {
 .containerRegister .registerLink {
     margin-top: 20px;
     font-size: 14px;
+	font-family: "Poppins", sans-serif;
     color: #666666;
 }
 
 .containerRegister .registerLink a {
     color: #62946f;
     text-decoration: none;
-    font-weight: bold;
 }
 
 .containerRegister .registerLink a:hover {
@@ -145,12 +156,14 @@ html, body {
     border-radius: 5px;
     margin-top: 10px;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
 }
 
 .form-group label {
     display: flex;
     align-items: center;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     color: #333;
     margin-top: 15px;
     width: 100%;
@@ -159,7 +172,7 @@ html, body {
 .form-group label span {
     margin-right: 10px;
     font-size: 18px;
-    font-weight: bold;
+	font-family: "Poppins", sans-serif;
 }
 
 .form-group select {
@@ -168,6 +181,7 @@ html, body {
     border: 1px solid #dddddd;
     border-radius: 5px;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     background-color: #ffffff;
     appearance: none;
     -webkit-appearance: none;
@@ -193,7 +207,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -229,6 +242,7 @@ html, body {
     border: 1px solid #dddddd;
     border-radius: 5px;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     box-sizing: border-box;
     min-width: 200px;
     max-width: 600px;
@@ -243,6 +257,7 @@ html, body {
     background-color: #62946f;
     color: white;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 0;
@@ -298,6 +313,7 @@ html, body {
     background-color: #62946f;
     color: white;
     font-size: 16px;
+	font-family: "Poppins", sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -347,7 +363,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -367,7 +382,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -387,7 +401,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -415,6 +428,7 @@ html, body {
     border-radius: 10px;
 	outline: none;
 	font-size: 15px;
+	font-family: "Poppins", sans-serif;
 }
 
 .form-button-group{
@@ -435,7 +449,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -454,7 +467,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
@@ -479,6 +491,7 @@ html, body {
 	border: none;
 	outline: none;
 	font-size: 15px;
+	font-family: "Poppins", sans-serif;
 	padding: 12px;
 	border-radius: 15px;
 	background-color: rgb(175, 175, 170);
@@ -496,7 +509,6 @@ html, body {
 	color: #fff;
     background-color: #62946f;
 	cursor: pointer;
-	font-weight: 500;
 	letter-spacing: 2px;
 }
 
