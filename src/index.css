@@ -95,7 +95,7 @@ html, body {
     padding: 15px;
     border: none;
     border-radius: 5px;
-    background-color: #62946f;
+    background-color: #037d50;
     color: white;
     font-size: 16px;
 	font-family: "Poppins", sans-serif;
@@ -105,7 +105,7 @@ html, body {
 }
 
 .containerRegister .btnRegister:hover {
-    background-color: #45b77d;
+    background-color: #03a96c;
 }
 
 .containerRegister .btnGoogle {
@@ -134,7 +134,7 @@ html, body {
 }
 
 .containerRegister .registerLink a {
-    color: #62946f;
+    color: #037d50;
     text-decoration: none;
 }
 
@@ -190,11 +190,11 @@ html, body {
 
 .form-group select:focus {
     outline: none;
-    border-color: #62946f;
+    border-color: #037d50;
 }
 
 .form-group select:hover {
-    border-color: #45b77d;
+    border-color: #03a96c;
 }
 
 
@@ -205,13 +205,13 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 .btnRegister:hover {
-	background-color:#62946f;
+	background-color:#037d50;
 	color: #000;
 }
 
@@ -254,7 +254,7 @@ html, body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #62946f;
+    background-color: #037d50;
     color: white;
     font-size: 16px;
 	font-family: "Poppins", sans-serif;
@@ -267,7 +267,7 @@ html, body {
 }
 
 .btn-logout:hover {
-    background-color: #45b77d;
+    background-color: #03a96c;
 }
 
 .userPage {
@@ -302,6 +302,23 @@ html, body {
     border-radius: 10px;
 }
 
+.card p.overflow {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+}
+
+.card .email {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+
 .btns-card {
     margin-top: 10px;
 }
@@ -310,7 +327,7 @@ html, body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #62946f;
+    background-color: #037d50;
     color: white;
     font-size: 16px;
 	font-family: "Poppins", sans-serif;
@@ -319,7 +336,7 @@ html, body {
 }
 
 .btn-view:hover {
-    background-color: #45b77d;
+    background-color: #03a96c;
 }
 
 
@@ -361,14 +378,14 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 
 .btn-update:hover {
-	background-color:#62946f;
+	background-color:#037d50;
 	color: #000;
 }
 
@@ -380,14 +397,14 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 
 .btn-delete:hover {
-	background-color:#62946f;
+	background-color:#037d50;
 	color: #000;
 }
 
@@ -399,13 +416,13 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 .btn-create:hover {
-	background-color:#62946f;
+	background-color:#037d50;
 	color: #000;
 }
 
@@ -447,13 +464,13 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 .form-button-group button:hover{
-    background-color:#62946f;
+    background-color:#037d50;
 	color: #000;
 }
 
@@ -465,7 +482,7 @@ html, body {
 	border-radius: 25px;
 	padding: 15px 30px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
@@ -507,13 +524,13 @@ html, body {
 	border-radius: 10px;
 	padding: 10px;
 	color: #fff;
-    background-color: #62946f;
+    background-color: #037d50;
 	cursor: pointer;
 	letter-spacing: 2px;
 }
 
 .btn-search:hover {
-	background-color:#62946f;
+	background-color:#037d50;
 	color: #000;
 }
 

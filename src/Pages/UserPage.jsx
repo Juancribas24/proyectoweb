@@ -65,7 +65,12 @@ const UserPage = ({ correoUser }) => {
             <img src={item.img} alt={item.name} />
             <p>Fecha: {item.date}</p>
             <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
-            <p>Registrados: {item.registered}</p>
+            <p>
+              Registrados: 
+              <span className="email" title={`Registrados: ${item.registered}`}>
+                {item.registered}
+              </span>
+            </p>
             <div className="btns-card">
               <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
             </div>  
