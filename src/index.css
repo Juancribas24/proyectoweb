@@ -7,15 +7,98 @@
 }
 
 body {
-	font-family: 'Montserrat';
-}
-
-.containerRegister{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5; /* Un color de fondo suave */
     display: flex;
-	align-items: center;
-    flex-direction: column;
-
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
+
+.containerRegister {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.containerRegister h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333333;
+}
+
+.containerRegister .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.containerRegister .form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.containerRegister .btnRegister {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #50cb90;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.containerRegister .btnRegister:hover {
+    background-color: #45b77d;
+}
+
+.containerRegister .btnGoogle {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #db4437;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.containerRegister .btnGoogle:hover {
+    background-color: #c23321;
+}
+
+.containerRegister .registerLink {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.containerRegister .registerLink a {
+    color: #50cb90;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.containerRegister .registerLink a:hover {
+    text-decoration: underline;
+}
+
 
 .form-group {
 	display: flex;

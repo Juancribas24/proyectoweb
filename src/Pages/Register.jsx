@@ -58,25 +58,28 @@ const Register = () => {
 
   return (
     <div className='containerRegister'>
-      <h1 className='text-center'>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h1>
-      <form className='formRegister' onSubmit={functAuthentucacion}>
-        <div className='form-group'>
-          <input type='email' className='register' placeholder='Email' id='email' name='email' autoComplete='email' />
-          <input type='password' className='password' placeholder='Password' id='password' name='password' autoComplete='current-password' />
-          {register && (
-            <label>Rol
-              <select id='rol' name='rol'>
-                <option value="admin">Administrador</option>
-                <option value="user">Usuario</option>
-              </select>
-            </label>
-          )}
-          <button type='submit' className='btnRegister'>{register ? 'Registrarse' : 'Iniciar Sesión'}</button>
+        <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
+        <form className='formRegister' onSubmit={functAuthentucacion}>
+            <div className='form-group'>
+                <input type='email' placeholder='Email' id='email' name='email' autoComplete='email' />
+                <input type='password' placeholder='Password' id='password' name='password' autoComplete='current-password' />
+                {register && (
+                    <label>
+                        Rol
+                        <select id='rol' name='rol'>
+                            <option value="admin">Administrador</option>
+                            <option value="user">Usuario</option>
+                        </select>
+                    </label>
+                )}
+            </div>
+            <button type='submit' className='btnRegister'>{register ? 'Registrarse' : 'Iniciar Sesión'}</button>
+        </form>
+        <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>
+        <div className='registerLink'>
+            {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={() => setRegister(!register)}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
         </div>
-      </form>
-      <button onClick={handleGoogleSignIn} className='btnRegister'>Iniciar sesión con Google</button>
-      <h4>{register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <button onClick={() => setRegister(!register)} className='btnRegister'>{register ? 'Iniciar Sesión' : 'Registrarse'}</button></h4>
-    </div>
+    </div> 
   );
 };
 
