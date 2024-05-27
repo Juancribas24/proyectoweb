@@ -67,7 +67,8 @@ const Register = () => {
 };
 
 return (
-  <div className='containerRegister'>
+  <div className="login-wrapper">
+    <div className='containerRegister'>
       <div className="header">
           <h2>{register ? 'Registrar usuario' : 'Iniciar Sesión'}</h2>
           <img src={logo} alt="Tennis Club Logo" className="logo" />
@@ -108,6 +109,7 @@ return (
       <div className='registerLink'>
           {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={toggleRegister}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
       </div>
+  </div>
   </div>
 );
 };

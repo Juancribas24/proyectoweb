@@ -9,13 +9,14 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f2f5; /* Un color de fondo suave */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f0f2f5;
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
+
 /* --------------------------------------------------------------------- */
 /* ----------- ESTILOS PARA EL INICIO DE SESIÓN ------------------------ */
 /* --------------------------------------------------------------------- */
@@ -51,6 +52,13 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .containerRegister h2 {
@@ -195,36 +203,37 @@ body {
 	color: #000;
 }
 
+/* --------------------------------------------------------------------- */
+/* ----------- ESTILOS PARA PÁGINAS DE USUARIO Y ADMN ------------------ */
+/* --------------------------------------------------------------------- */
+
+/* -- NavBar --*/
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+
+
+
+/* Torneo */
+
 .containerTorneo{
     margin-top: 15px;
     display: flex;
 	align-items: center;
     flex-direction: column;
-
-}
-.btn-logout {
-	width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	font-family: inherit;
-	color: #fff;
-    background-color: #50cb90;
-	cursor: pointer;
-	font-weight: 500;
-	letter-spacing: 2px;
-}
-
-.btn-logout:hover {
-	background-color:#84f1bd;
-	color: #000;
-}
-
-.containerTorneo{
-    display: flex;
     padding: 15px;
-    flex-direction: column;
 }
 
 .containerTorneo img{

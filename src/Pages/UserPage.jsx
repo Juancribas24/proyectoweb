@@ -47,29 +47,27 @@ const UserPage = ({ correoUser }) => {
   }, []);
 
   return (
-    <div>
-      <nav className='container-nav-admin'>
-        <form className='form-nav'>
-          <Link to='/'>
-            <img 
-              src={logo} 
-              alt="Logo Tennis" />
-          </Link>
-          <SearchTorneo torneos={torneos} onSearch={handleSearch} />
-          <button className='btn-logout' onClick={handleSignOut}>Logout</button>
-        </form>
+    <div className="userPage">
+      <nav className="navbar">
+        <Link to='/'>
+          <img src={logo} alt="Logo Tennis" className="logo" />
+        </Link>
+        <SearchTorneo torneos={torneos} onSearch={handleSearch} className="search-bar"/>
+        <button className="btn-logout" onClick={handleSignOut}>Logout</button>
       </nav>
-      <h1>Bienvenido user {correoUser}</h1>
-      <div className='card-group'>
+      <div className="welcome-message">
+        <h1>Bienvenido user {correoUser}</h1>
+      </div>
+      <div className="card-group">
         {filteredTorneos && filteredTorneos.map((item) => (
-          <div className='card' key={item.id}>
+          <div className="card" key={item.id}>
             <h2>{item.name}</h2>
             <img src={item.img} alt={item.name} />
             <p>Fecha: {item.date}</p>
             <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
             <p>Registrados: {item.registered}</p>
-            <div className='btns-card'>
-              <button className='btn-view' onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
+            <div className="btns-card">
+              <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
             </div>  
           </div>
         ))}  
