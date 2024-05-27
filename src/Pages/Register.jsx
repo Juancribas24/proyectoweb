@@ -65,7 +65,7 @@ const Register = () => {
                 <input type='password' placeholder='Password' id='password' name='password' autoComplete='current-password' />
                 {register && (
                     <label>
-                        Rol
+                        <span>Rol</span>
                         <select id='rol' name='rol'>
                             <option value="admin">Administrador</option>
                             <option value="user">Usuario</option>
@@ -79,8 +79,8 @@ const Register = () => {
         <div className='registerLink'>
             {register ? 'Si ya tienes cuenta' : 'No tienes cuenta'} <a href="#" onClick={() => setRegister(!register)}>{register ? 'Iniciar Sesión' : 'Registrarse'}</a>
         </div>
-    </div> 
-  );
+    </div>
+  ); 
 };
 
 export default Register;
