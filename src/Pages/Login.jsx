@@ -66,7 +66,7 @@ const Login = () => {
           </div>
           <button type='submit' className='btnRegister'>Iniciar Sesión</button>
         </form>
-        <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con oogle</button>
+        <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>
         <div className='registerLink'>
           No tienes cuenta <a href="#" onClick={redirectToRegister}>Registrarse</a>
         </div>
