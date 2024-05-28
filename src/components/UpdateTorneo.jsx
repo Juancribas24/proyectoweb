@@ -3,6 +3,7 @@ import { storage, db } from '../credenciales/credenciales';
 import { useParams, useNavigate } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import logo from '../assets/TennisClub.png';
 
 const UpdateTorneo = () => {
   const { id } = useParams();
@@ -84,51 +85,61 @@ const UpdateTorneo = () => {
     navigate('/admin'); // Redirige a la página de admin después de actualizar el torneo
   };
 
+  const handleBack = () => {
+    navigate('/admin');
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Actualizar Torneo</h2>
-      <div className='form-group'>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nombre"
-          value={updateTournament.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          placeholder="Fecha"
-          value={updateTournament.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="maxParticipants"
-          placeholder="Participantes Máximos"
-          value={updateTournament.maxParticipants}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="registered"
-          placeholder="Registrados"
-          value={updateTournament.registered}
-          onChange={handleChange}
-        />
-        <input
-          type="file"
-          name="img"
-          onChange={(event) => setFile(event.target.files[0])}
-        />
-        {progress !== null && <progress value={progress} max="100" />}
-      </div>
-      <button type="submit" disabled={progress !== null && progress < 100}>
-        Actualizar Torneo
-      </button>
-    </form>
+    <div className="torneo-detail">
+      <nav className="navbar">
+        <button className="btn-back btn-create" onClick={handleBack}>Volver al Menú</button>
+        <img src={logo} alt="Logo Tennis" className="logo" />
+      </nav>
+      <form className="form-torneo" onSubmit={handleSubmit}>
+        <h2>Actualizar Torneo</h2>
+        <div className='form-group'>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            value={updateTournament.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="date"
+            name="date"
+            placeholder="Fecha"
+            value={updateTournament.date}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="number"
+            name="maxParticipants"
+            placeholder="Participantes Máximos"
+            value={updateTournament.maxParticipants}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            name="registered"
+            placeholder="Registrados"
+            value={updateTournament.registered}
+            onChange={handleChange}
+          />
+          <input
+            type="file"
+            name="img"
+            onChange={(event) => setFile(event.target.files[0])}
+          />
+          {progress !== null && <progress value={progress} max="100" />}
+        </div>
+        <button className="btn-create" type="submit" disabled={progress !== null && progress < 100}>
+          Actualizar Torneo
+        </button>
+      </form>
+    </div>
   );
 };
 

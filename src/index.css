@@ -108,7 +108,8 @@ html, body {
     background-color: #03a96c;
 }
 
-.containerRegister .btnGoogle, .btn-delete {
+.containerRegister .btnGoogle, .btn-delete, .btn-back 
+	{
     width: 100%;
     padding: 15px;
     border: none;
@@ -122,14 +123,19 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-.btn-delete{
+.btn-delete, .btn-back {
 	padding: 10px 20px;
     border: none;
     border-radius: 5px;
 	width: auto;
 }
 
-.containerRegister .btnGoogle:hover, .btn-delete:hover {
+.btn-back {
+	max-width: 200px;
+	justify-self: right;
+}
+
+.containerRegister .btnGoogle:hover, .btn-delete:hover, .btn-back:hover {
     background-color: #c23321;
 }
 
@@ -352,7 +358,7 @@ html, body {
 
 
 
-/* Torneo */
+/* ---------------- Torneo ----------------*/
 
 
 .torneo-detail {
@@ -384,120 +390,56 @@ html, body {
 	gap: 10px;
 }
 
-.btns{
-    gap:10px; 
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
 
-
-.form-group1{
-    margin-top: 10px;
-}
-
-
-.form-group1 input{
-    margin: 10px;
-    display: flex;
-	align-items: center;
-    flex-direction: column;
-    gap: 20px;
-	padding: 15px 15px;
-	width: 250px;
-	border: none;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-	outline: none;
-	font-size: 15px;
-	font-family: "Poppins", sans-serif;
-}
-
-.form-button-group{
-    display: flex;
-    align-items: center;
-	flex-direction: row;
-	gap: 10px;
-	padding: 20px;
-}
-
-.form-button-group button{
-    margin-top: 10px;
-    width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	color: #fff;
-    background-color: #037d50;
-	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-.form-button-group button:hover{
-    background-color:#037d50;
-	color: #000;
-}
-
-    
-.btn-new-create{
-    width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	color: #fff;
-    background-color: #037d50;
-	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-.form-nav{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	
-
-
-}
-
-
-.container-nav-admin img{
-	width: 250px;
-	padding: 10px;
-
-}
-
-.container-nav-admin input{
-	width: 400px;
-	border: none;
-	outline: none;
-	font-size: 15px;
-	font-family: "Poppins", sans-serif;
-	padding: 12px;
-	border-radius: 15px;
-	background-color: rgb(175, 175, 170);
-}
-
-
-
-
-
-.btn-search{
-	border: none;
-	outline: none;
+.form-torneo {
+	max-width: 400px;
+	margin: 20px auto; /* Centrar el formulario */
+	background-color: #fff;
 	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	text-align: center;
+  }
+  
+  .form-torneo .form-group {
+	margin-bottom: 15px;
+  }
+  
+  .form-torneo .form-group input {
+	width: 100%;
 	padding: 10px;
-	color: #fff;
-    background-color: #037d50;
+	margin-top: 10px;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	font-size: 16px;
+  }
+  
+  .form-torneo .btn-create, .form-torneo .btn-back {
+	width: 100%;
+	padding: 15px;
+	border: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-size: 16px;
 	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-.btn-search:hover {
-	background-color:#037d50;
-	color: #000;
-}
-
-
+	transition: background-color 0.3s ease;
+  }
+  
+  .form-torneo .btn-create {
+	background-color: #037d50;
+	color: white;
+  }
+  
+  .form-torneo .btn-create:hover {
+	background-color: #03a96c;
+  }
+  
+  .btn-back {
+	background-color: #db4437;
+	color: white;
+  }
+  
+  .btn-back:hover {
+	background-color: #c23321;
+  }
 

@@ -41,7 +41,8 @@ const TorneoDetail = ({ correoUser }) => {
   return (
     <div className="torneo-detail">
       <nav className="navbar">
-        <img src={logo} alt="Logo Tennis" className="logo" onClick={handleBack} />
+        <button className="btn-back" onClick={handleBack}>Volver al Menú</button>
+        <img src={logo} alt="Logo Tennis" className="logo" />
       </nav>
       <div className="card">
         <h1>{torneo.name}</h1>
@@ -50,7 +51,6 @@ const TorneoDetail = ({ correoUser }) => {
         <p>Cantidad máxima de participantes: {torneo.maxParticipants}</p>
         <p>Registrados: {torneo.registered.length}</p>
         <button className="btn-create" onClick={handleInscripcion}>Inscribirse</button>
-        <button className="btn-delete" onClick={handleBack}>Volver al Menú</button>
       </div>
     </div>
   );

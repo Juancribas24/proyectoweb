@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createDocument } from '../credenciales/crud';
 import { storage } from '../credenciales/credenciales';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import logo from '../assets/TennisClub.png';
 
 const CreateTorneo = () => {
   const [file, setFile] = useState(null);
@@ -69,51 +70,61 @@ const CreateTorneo = () => {
     }));
   };
 
+  const handleBack = () => {
+    navigate('/admin');
+  };
+
   return (
-    <form onSubmit={handleCreateDocument}>
-      <h2>Crear Nuevo Torneo</h2>
-      <div className='form-group'>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nombre"
-          value={newTournament.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          placeholder="Fecha"
-          value={newTournament.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="maxParticipants"
-          placeholder="Participantes Máximos"
-          value={newTournament.maxParticipants}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="registered"
-          placeholder="Registrados"
-          value={newTournament.registered}
-          onChange={handleChange}
-        />
-        <input
-          type="file"
-          name="img"
-          placeholder="Agrega una imagen"
-          onChange={(event) => setFile(event.target.files[0])}
-        />
-      </div>
-      <button type="submit" disabled={progress !== null && progress < 100}>
-        Crear Nuevo Torneo
-      </button>
-    </form>
+    <div className="torneo-detail">
+      <nav className="navbar">
+        <button className="btn-back btn-create" onClick={handleBack}>Volver al Menú</button>
+        <img src={logo} alt="Logo Tennis" className="logo" />
+      </nav>
+      <form className="form-torneo" onSubmit={handleCreateDocument}>
+        <h2>Crear Nuevo Torneo</h2>
+        <div className='form-group'>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            value={newTournament.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="date"
+            name="date"
+            placeholder="Fecha"
+            value={newTournament.date}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="number"
+            name="maxParticipants"
+            placeholder="Participantes Máximos"
+            value={newTournament.maxParticipants}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            name="registered"
+            placeholder="Registrados"
+            value={newTournament.registered}
+            onChange={handleChange}
+          />
+          <input
+            type="file"
+            name="img"
+            placeholder="Agrega una imagen"
+            onChange={(event) => setFile(event.target.files[0])}
+          />
+        </div>
+        <button className="btn-create" type="submit" disabled={progress !== null && progress < 100}>
+          Crear Nuevo Torneo
+        </button>
+      </form>
+    </div>
   );
 };
 
