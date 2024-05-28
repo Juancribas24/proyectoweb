@@ -8,7 +8,6 @@ import SearchTorneo from '../components/SearchTorneo';
 
 const auth = getAuth(appFirebase);
 
-
 const UserPage = ({ correoUser }) => {
   const [torneos, setTorneos] = useState([]);
   const [filteredTorneos, setFilteredTorneos] = useState([]);
@@ -29,14 +28,14 @@ const UserPage = ({ correoUser }) => {
 
     return () => {
       unsub();
-    }
+    };
   }, []);
 
   const handleSignOut = async () => {
     try {
       await signOut(auth);
       console.log("Usuario deslogueado con éxito");
-      navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión
+      navigate('/login'); // Redirige al usuario a la página de inicio de sesión después de cerrar sesión
     } catch (error) {
       console.error("Error al desloguear usuario:", error);
     }
@@ -59,38 +58,33 @@ const UserPage = ({ correoUser }) => {
         <h1>Bienvenido user {correoUser}</h1>
       </div>
       <div className="card-group">
-        {filteredTorneos && filteredTorneos.map((item) => {
-          console.log('URL de la imagen:', item.img); // Imprime la URL de la imagen en la consola
-          return (
-            <div className="card" key={item.id}>
-              <h2>{item.name}</h2>
-              <img 
-                src={item.img} 
-                alt={item.name} 
-                onError={(e) => { 
-                  console.error("Image not loaded", e); 
-                  console.log("Failed URL:", e.target.src); // Imprime la URL fallida en la consola
-                  e.target.style.display = 'none'; 
-                }} 
-              />
-              <p>Fecha: {item.date}</p>
-              <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
-              <p>
-                Registrados: 
-                <span className="email" title={`Registrados: ${item.registered}`}>
-                  {item.registered}
-                </span>
-              </p>
-              <div className="btns-card">
-                <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
-              </div>  
-            </div>
-          );
-        })}  
+        {filteredTorneos && filteredTorneos.map((item) => (
+          <div className="card" key={item.id}>
+            <h2>{item.name}</h2>
+            <img 
+              src={item.img} 
+              alt={item.name} 
+              onError={(e) => { 
+                console.error("Image not loaded", e); 
+                e.target.style.display = 'none'; 
+              }} 
+            />
+            <p>Fecha: {item.date}</p>
+            <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
+            <p>
+              Registrados: 
+              <span className="email" title={`Registrados: ${item.registered}`}>
+                {item.registered}
+              </span>
+            </p>
+            <div className="btns-card">
+              <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
+            </div>  
+          </div>
+        ))}  
       </div>
     </div>
   );
 };
-
 
 export default UserPage;

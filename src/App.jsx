@@ -4,7 +4,6 @@ import { AppRouter } from './AppRouter';
 import appFirebase from './credenciales/credenciales';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import Register from './Pages/Register';
 
 const auth = getAuth(appFirebase);
 const firestore = getFirestore(appFirebase);
@@ -61,7 +60,7 @@ function App() {
   return (
     <Router>
       <div>
-        {user ? <AppRouter correoUser={user.email} rol={user.rol} /> : <Register />}
+        <AppRouter correoUser={user?.email} rol={user?.rol} />
       </div>
     </Router>
   );
