@@ -126,6 +126,7 @@ html, body {
 	padding: 10px 20px;
     border: none;
     border-radius: 5px;
+	width: auto;
 }
 
 .containerRegister .btnGoogle:hover, .btn-delete:hover {
