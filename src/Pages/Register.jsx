@@ -72,7 +72,6 @@ const Register = () => {
           </div>
           <button type='submit' className='btnRegister'>Registrarse</button>
         </form>
-        <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>
         <div className='registerLink'>
           ¿Ya tienes cuenta? <a href="#" onClick={redirectToLogin}>Iniciar Sesión</a>
         </div>
