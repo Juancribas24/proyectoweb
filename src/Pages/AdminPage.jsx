@@ -91,7 +91,7 @@ const AdminPage = ({ correoUser }) => {
         <div className="right-buttons">
           <Link to='/create'>
             <button type='button' className='btn-create'>
-              Crear Nuevo Torneo
+              Crear nuevo torneo
             </button>
           </Link>
           <button type='button' className='btn-logout' onClick={handleSignOut}>
