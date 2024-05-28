@@ -117,10 +117,10 @@ const AdminPage = ({ correoUser }) => {
                   e.target.style.display = 'none'; 
                 }} 
               />
-              <p>Fecha: {item.date}</p>
-              <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
+              <p><b>Fecha:</b> {item.date}</p>
+              <p><b>Cantidad máxima de participantes:</b> {item.maxParticipants}</p>
               <p>
-                Registrados: 
+                <b>Registrados:</b> 
                 <span className="email" title={`Registrados: ${item.registered}`}>
                   {item.registered}
                 </span>

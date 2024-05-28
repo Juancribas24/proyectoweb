@@ -69,16 +69,17 @@ const UserPage = ({ correoUser }) => {
                 e.target.style.display = 'none'; 
               }} 
             />
-            <p>Fecha: {item.date}</p>
-            <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
+            <p><b>Fecha:</b> {item.date}</p>
+            <p> <b>Cantidad máxima de participantes: </b>{item.maxParticipants}</p>
             <p>
-              Registrados: 
-              <span className="email" title={`Registrados: ${item.registered}`}>
+              <b>Registrados:</b> 
+              <span className="email" 
+                title={`Registrados: ${item.registered}`}>
                 {item.registered}
               </span>
             </p>
             <div className="btns-card">
-              <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver Torneo</button>
+              <button className="btn-view" onClick={() => navigate(`/torneo/${item.id}`)}>Ver torneo</button>
             </div>  
           </div>
         ))}  
