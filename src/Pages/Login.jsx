@@ -9,6 +9,7 @@ const auth = getAuth(appFirebase);
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -18,6 +19,7 @@ const Login = () => {
       navigate('/'); // Redirige al usuario después de iniciar sesión
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
+      setError("Credenciales inválidas. Por favor, verifica tu correo y contraseña.");
     }
   };
 
@@ -28,6 +30,7 @@ const Login = () => {
       navigate('/'); // Redirige al usuario después de iniciar sesión con Google
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
+      setError("Error al iniciar sesión con Google. Por favor, intenta de nuevo.");
     }
   };
 
@@ -64,6 +67,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {error && <p className="error">{error}</p>}
           <button type='submit' className='btnRegister'>Iniciar Sesión</button>
         </form>
         <button onClick={handleGoogleSignIn} className='btnGoogle'>Iniciar sesión con Google</button>

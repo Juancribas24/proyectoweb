@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../credenciales/credenciales';
 import logo from '../assets/TennisClub.png';
 
@@ -29,7 +29,21 @@ const TorneoDetail = ({ correoUser }) => {
     await updateDoc(docRef, {
       registered: arrayUnion(correoUser)
     });
-    navigate('/user');
+    setTorneo((prevTorneo) => ({
+      ...prevTorneo,
+      registered: [...prevTorneo.registered, correoUser]
+    }));
+  };
+
+  const handleDesinscripcion = async () => {
+    const docRef = doc(db, 'torneos', id);
+    await updateDoc(docRef, {
+      registered: arrayRemove(correoUser)
+    });
+    setTorneo((prevTorneo) => ({
+      ...prevTorneo,
+      registered: prevTorneo.registered.filter(user => user !== correoUser)
+    }));
   };
 
   const handleBack = () => {
@@ -37,6 +51,8 @@ const TorneoDetail = ({ correoUser }) => {
   };
 
   if (!torneo) return <div>Cargando...</div>;
+
+  const isUserRegistered = torneo.registered.includes(correoUser);
 
   return (
     <div className="torneo-detail">
@@ -50,7 +66,11 @@ const TorneoDetail = ({ correoUser }) => {
         <p>Fecha: {torneo.date}</p>
         <p>Cantidad máxima de participantes: {torneo.maxParticipants}</p>
         <p>Registrados: {torneo.registered.length}</p>
-        <button className="btn-create" onClick={handleInscripcion}>Inscribirse</button>
+        {isUserRegistered ? (
+          <button className="btn-danger" onClick={handleDesinscripcion}>Desinscribirse</button>
+        ) : (
+          <button className="btn-create" onClick={handleInscripcion}>Inscribirse</button>
+        )}
       </div>
     </div>
   );

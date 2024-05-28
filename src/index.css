@@ -337,6 +337,7 @@ html, body {
 }
 
 
+
 .btns-card {
     margin-top: 10px;
 }
@@ -415,7 +416,7 @@ html, body {
 	font-size: 16px;
   }
   
-  .form-torneo .btn-create, .form-torneo .btn-back {
+  .form-torneo .btn-create, .form-torneo .btn-back{
 	width: 100%;
 	padding: 15px;
 	border: none;
@@ -426,13 +427,33 @@ html, body {
 	transition: background-color 0.3s ease;
   }
   
-  .form-torneo .btn-create {
+  .form-torneo .btn-create{
 	background-color: #037d50;
 	color: white;
   }
   
   .form-torneo .btn-create:hover {
 	background-color: #03a96c;
+  }
+
+  .btn-danger{
+    width: 60%;
+	padding: 15px;
+	border: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-size: 16px;
+	cursor: pointer;
+    font-family: "Poppins", sans-serif;
+	transition: background-color 0.3s ease;
+  }
+
+  .btn-danger{
+    background-color: #c23321;
+  }
+
+  .btn-danger:hover{
+    background-color: #db4437;
   }
   
   .btn-back {

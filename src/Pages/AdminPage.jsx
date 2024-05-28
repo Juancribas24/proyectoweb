@@ -1,140 +1,79 @@
-import React, { useState, useEffect, useCallback  } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import appFirebase, { db } from '../credenciales/credenciales';
-import { getAuth, signOut } from 'firebase/auth';
-import { createDocument, readDocument, deleteDocument } from '../credenciales/crud';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { db } from '../credenciales/credenciales';
 import logo from '../assets/TennisClub.png';
-import { collection, onSnapshot } from 'firebase/firestore';
-import SearchTorneo from '../components/SearchTorneo';
 
-const auth = getAuth(appFirebase);
-
-const AdminPage = ({ correoUser }) => {
-  const [torneos, setTorneos] = useState([]);
-  const [filteredTorneos, setFilteredTorneos] = useState([]);
-  const [loading, setLoading] = useState(false);  
-  const [newTournament, setNewTournament] = useState({
-    name: '',
-    date: '',
-    img: '',
-    maxParticipants: 0,
-    registered: 0,
-  });
-
+const TorneoDetail = ({ correoUser }) => {
+  const { id } = useParams();
+  const [torneo, setTorneo] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-    const unsub = onSnapshot(collection(db, "torneos"), (snapshot) => {
-      let list = []
-      snapshot.docs.forEach((doc) => {
-        list.push({ id: doc.id, ...doc.data() })
-      });
-      setTorneos(list);
-      setFilteredTorneos(list);
-      setLoading(false);
-    },
-      (error) => {
-        console.log(error);
+    const fetchTorneo = async () => {
+      const docRef = doc(db, 'torneos', id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setTorneo(docSnap.data());
+      } else {
+        console.log("No such document!");
       }
-    );
-    return () => {
-      unsub();
-    }
-  }, []);
+    };
 
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      console.log("Usuario deslogueado con éxito");
-      navigate('/'); // Redirige al usuario a la página de inicio después de cerrar sesión
-    } catch (error) {
-      console.error("Error al desloguear usuario:", error);
-    }
-  };
+    fetchTorneo();
+  }, [id]);
 
-  const handleCreateDocument = async (event) => {
-    event.preventDefault();
-    const newId = `torneo-${Date.now()}`;
-    await createDocument('torneos', newId, newTournament);
-    navigate('/admin'); // Redirige a la página de admin después de crear el torneo
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setNewTournament((prev) => ({
-      ...prev,
-      [name]: value,
+  const handleInscripcion = async () => {
+    const docRef = doc(db, 'torneos', id);
+    await updateDoc(docRef, {
+      registered: arrayUnion(correoUser)
+    });
+    setTorneo((prevTorneo) => ({
+      ...prevTorneo,
+      registered: [...prevTorneo.registered, correoUser]
     }));
   };
 
-  const handleDeleteDocument = async (id) => {
-    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar este torneo?');
-    if (confirmDelete) {
-      await deleteDocument('torneos', id);
-      setTorneos(torneos.filter((torneo) => torneo.id !== id));
-      setFilteredTorneos(filteredTorneos.filter((torneo) => torneo.id !== id));
-    }
+  const handleDesinscripcion = async () => {
+    const docRef = doc(db, 'torneos', id);
+    await updateDoc(docRef, {
+      registered: arrayRemove(correoUser)
+    });
+    setTorneo((prevTorneo) => ({
+      ...prevTorneo,
+      registered: prevTorneo.registered.filter(user => user !== correoUser)
+    }));
   };
 
-  const handleSearch = useCallback((results) => {
-    setFilteredTorneos(results);
-  }, []);
+  const handleBack = () => {
+    navigate('/user');
+  };
+
+  if (!torneo) return <div>Cargando...</div>;
+
+  const isUserRegistered = torneo.registered.includes(correoUser);
 
   return (
-    <div className="userPage">
+    <div className="torneo-detail">
       <nav className="navbar">
-        <Link to='/'>
-          <img src={logo} alt="Logo Tennis" className="logo" />
-        </Link>
-        <SearchTorneo torneos={torneos} onSearch={handleSearch} className="search-bar" />
-        <div className="right-buttons">
-          <Link to='/create'>
-            <button type='button' className='btn-create'>
-              Crear nuevo torneo
-            </button>
-          </Link>
-          <button type='button' className='btn-logout' onClick={handleSignOut}>
-            Logout
-          </button>
-        </div>
+        <button className="btn-back" onClick={handleBack}>Volver al Menú</button>
+        <img src={logo} alt="Logo Tennis" className="logo" />
       </nav>
-      <div className="welcome-message">
-        <h1>Bienvenido admin {correoUser}</h1>
-      </div>
-      <div className="card-group">
-        {filteredTorneos && filteredTorneos.map((item) => {
-          console.log('URL de la imagen:', item.img); // Imprime la URL de la imagen en la consola
-          return (
-            <div className="card" key={item.id}>
-              <h2>{item.name}</h2>
-              <img 
-                src={item.img || "URL_DE_IMAGEN_POR_DEFECTO"} // Usar imagen por defecto si `item.img` está vacío
-                alt={item.name} 
-                onError={(e) => { 
-                  console.error("Image not loaded", e); 
-                  console.log("Failed URL:", e.target.src); // Imprime la URL fallida en la consola
-                  e.target.style.display = 'none'; 
-                }} 
-              />
-              <p><b>Fecha:</b> {item.date}</p>
-              <p><b>Cantidad máxima de participantes:</b> {item.maxParticipants}</p>
-              <p>
-                <b>Registrados:</b> 
-                <span className="email" title={`Registrados: ${item.registered}`}>
-                  {item.registered}
-                </span>
-              </p>
-              <div className="btns-card">
-                <button className="btn-update" onClick={() => navigate(`/update/${item.id}`)}>Actualizar torneo</button>
-                <button className="btn-delete" onClick={() => handleDeleteDocument(item.id)}>Eliminar torneo</button>
-              </div>  
-            </div>
-          );
-        })}  
+      <div className="card">
+        <h1>{torneo.name}</h1>
+        <img src={torneo.img} alt={torneo.name} />
+        <p>Fecha: {torneo.date}</p>
+        <p>Cantidad máxima de participantes: {torneo.maxParticipants}</p>
+        <p>Registrados: {torneo.registered.length}</p>
+        {isUserRegistered ? (
+          <button className="btn-danger" onClick={handleDesinscripcion}>Desinscribirse</button>
+        ) : (
+          <button className="btn-create" onClick={handleInscripcion}>Inscribirse</button>
+        )}
       </div>
     </div>
   );
 };
 
-export default AdminPage;
+export default TorneoDetail;
