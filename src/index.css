@@ -108,7 +108,7 @@ html, body {
     background-color: #03a96c;
 }
 
-.containerRegister .btnGoogle {
+.containerRegister .btnGoogle, .btn-delete {
     width: 100%;
     padding: 15px;
     border: none;
@@ -122,7 +122,13 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-.containerRegister .btnGoogle:hover {
+.btn-delete{
+	padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.containerRegister .btnGoogle:hover, .btn-delete:hover {
     background-color: #c23321;
 }
 
@@ -249,24 +255,28 @@ html, body {
     height: auto;
 }
 
+.right-buttons {
+    display: flex;
+    justify-self: end;
+    gap: 10px;
+}
 
-.btn-logout {
+.btn-logout, .btn-create, .btn-update {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: #037d50;
     color: white;
     font-size: 16px;
-	font-family: "Poppins", sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 0;
-	min-width: 100px;
-    max-width: 200px;
-    justify-self: center; /* Centra el botón de logout horizontalmente */
 }
 
-.btn-logout:hover {
+.btn-logout{
+	max-width: 100px;
+}
+
+.btn-logout:hover, .btn-create:hover, .btn-update:hover {
     background-color: #03a96c;
 }
 
@@ -370,66 +380,10 @@ html, body {
     flex-direction: row;
 }
 
-.btn-update{
-    margin-top: 10px;
-    width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	color: #fff;
-    background-color: #037d50;
-	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-
-.btn-update:hover {
-	background-color:#037d50;
-	color: #000;
-}
-
-.btn-delete{
-    margin-top: 10px;
-    width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	color: #fff;
-    background-color: #037d50;
-	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-
-.btn-delete:hover {
-	background-color:#037d50;
-	color: #000;
-}
-
-.btn-create{
-    margin-top: 10px;
-    width: auto;
-	border: none;
-	outline: none;
-	border-radius: 25px;
-	padding: 15px 30px;
-	color: #fff;
-    background-color: #037d50;
-	cursor: pointer;
-	letter-spacing: 2px;
-}
-
-.btn-create:hover {
-	background-color:#037d50;
-	color: #000;
-}
 
 .form-group1{
     margin-top: 10px;
 }
-
 
 
 .form-group1 input{

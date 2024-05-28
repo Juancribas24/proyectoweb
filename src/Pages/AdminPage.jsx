@@ -82,45 +82,56 @@ const AdminPage = ({ correoUser }) => {
   }, []);
 
   return (
-    <div className='containerGoku'>
-      <nav className='container-nav-admin'>
-        <form className='form-nav'>
-          <Link to='/'>
-            <img 
-              src={logo} 
-              alt="Logo Tennis" />
-          </Link>
-          <SearchTorneo torneos={torneos} onSearch={handleSearch} />
+    <div className="userPage">
+      <nav className="navbar">
+        <Link to='/'>
+          <img src={logo} alt="Logo Tennis" className="logo" />
+        </Link>
+        <SearchTorneo torneos={torneos} onSearch={handleSearch} className="search-bar" />
+        <div className="right-buttons">
           <Link to='/create'>
-            <button
-              type='button'
-              className='btn-create'
-            >
+            <button type='button' className='btn-create'>
               Crear Nuevo Torneo
             </button>
           </Link>
-          <button
-            type='button'
-            className='btn-logout'
-            onClick={handleSignOut}
-          >Logout</button>
-        </form>
+          <button type='button' className='btn-logout' onClick={handleSignOut}>
+            Logout
+          </button>
+        </div>
       </nav>
-      <h1>Bienvenido admin {correoUser}</h1>
-      <div className='card-group'>
-        {filteredTorneos && filteredTorneos.map((item) => (
-          <div className='card' key={item.id}>
-            <h2>{item.name}</h2>
-            <img src={item.img} alt={item.name} />
-            <p>Fecha: {item.date}</p>
-            <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
-            <p>Registrados: {item.registered}</p>
-            <div className='btns-card'>
-              <button className='btn-update' onClick={() => navigate(`/update/${item.id}`)}>Actualizar torneo</button>
-              <button className='btn-delete' onClick={() => handleDeleteDocument(item.id)}>Eliminar torneo</button>
-            </div>           
-          </div>
-        ))}  
+      <div className="welcome-message">
+        <h1>Bienvenido admin {correoUser}</h1>
+      </div>
+      <div className="card-group">
+        {filteredTorneos && filteredTorneos.map((item) => {
+          console.log('URL de la imagen:', item.img); // Imprime la URL de la imagen en la consola
+          return (
+            <div className="card" key={item.id}>
+              <h2>{item.name}</h2>
+              <img 
+                src={item.img || "URL_DE_IMAGEN_POR_DEFECTO"} // Usar imagen por defecto si `item.img` está vacío
+                alt={item.name} 
+                onError={(e) => { 
+                  console.error("Image not loaded", e); 
+                  console.log("Failed URL:", e.target.src); // Imprime la URL fallida en la consola
+                  e.target.style.display = 'none'; 
+                }} 
+              />
+              <p>Fecha: {item.date}</p>
+              <p>Cantidad máxima de participantes: {item.maxParticipants}</p>
+              <p>
+                Registrados: 
+                <span className="email" title={`Registrados: ${item.registered}`}>
+                  {item.registered}
+                </span>
+              </p>
+              <div className="btns-card">
+                <button className="btn-update" onClick={() => navigate(`/update/${item.id}`)}>Actualizar torneo</button>
+                <button className="btn-delete" onClick={() => handleDeleteDocument(item.id)}>Eliminar torneo</button>
+              </div>  
+            </div>
+          );
+        })}  
       </div>
     </div>
   );
