@@ -354,6 +354,16 @@ html, body {
 
 /* Torneo */
 
+
+.torneo-detail {
+	padding-top: 70px; /* Espacio para el navbar fijo */
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; /* Asegura que el contenedor cubra al menos la altura de la ventana */
+	text-align: center;
+  }
 .containerTorneo{
     margin-top: 15px;
     display: flex;
