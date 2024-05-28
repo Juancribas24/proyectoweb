@@ -12,8 +12,8 @@ const CreateTorneo = () => {
     name: '',
     date: '',
     img: '',
-    maxParticipants: 0,
-    registered: 0,
+    maxParticipants: '',
+    registered: '',
   });
 
   const navigate = useNavigate();
