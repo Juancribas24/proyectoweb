@@ -57,7 +57,7 @@ const Register = () => {
               placeholder='Email'
               id='email'
               name='email'
-              autoComplete='email'
+              autoComplete='off'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -66,7 +66,7 @@ const Register = () => {
               placeholder='Password'
               id='password'
               name='password'
-              autoComplete='current-password'
+              autoComplete='off'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
